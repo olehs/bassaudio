@@ -402,6 +402,10 @@ i only added methods, properties what i needed.. add yours to the code or send m
 **UPDATE LOG**
 
 **--------------------------------**
+
+- 1.0.0-rc.17
+    - BASS_Encode_IsActive fixed
+
 - 1.0.0-rc.16
     - getDevice(-1) must find the default sound card and return it.
     - BASS_GetDevice takes 1 argument, but missing in code. fixed.
