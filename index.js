@@ -16,7 +16,7 @@ function bass() {
     this.BASS_DEVICEINFO = Struct({
         'name': 'string',
         'driver': 'string',
-        'flags': 'long'
+        'flags': ref.types.int64
     })
 
     this.BASSFlags = {
@@ -423,6 +423,15 @@ bass.prototype.getDevices = function () {
 
 bass.prototype.getDevice = function (device) {
 
+    if(device==-1){
+        var devs=this.getDevices();
+        for(i=0;i<devs.length;i++){
+            if(devs[i].IsDefault){
+                return devs[i]
+            }
+        }
+
+    }
     var info = new this.BASS_DEVICEINFO();
 
     this.basslib.BASS_GetDeviceInfo(device, info.ref())
@@ -577,8 +586,8 @@ bass.prototype.BASS_GetCPU = function () {
 }
 
 //bura
-bass.prototype.BASS_GetDevice = function () {
-    return this.basslib.BASS_GetDevice();
+bass.prototype.BASS_GetDevice = function (soundCard) {
+    return this.basslib.BASS_GetDevice(soundCard);
 }
 
 bass.prototype.BASS_GetDeviceInfo = function (device, info) {
