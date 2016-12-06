@@ -1,238 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fd1a5f2-df1a-46ff-8d0c-885ba232140a" name="Default" comment="- 1.0.0-rc.16&#10;    - getDevice(-1) must find the default sound card and return it.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.exp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.lib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.pdb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/libffi.lib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/callback_info.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/CL.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/CL.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/CL.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/ffi_bindings.lastbuildstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/ffi_bindings.write.1u.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/link.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/link.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/ffi_bindings.tlog/link.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/threaded_callback_invokation.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/vc140.pdb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/win32-dlfcn.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/obj/ffi_bindings/win_delay_load_hook.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/binding.sln" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/closures.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.pdb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/CL.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/CL.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/CL.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/Lib-link.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/Lib-link.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/ffi.lastbuildstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.tlog/lib.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/ffi.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/java_raw_api.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/prep_cif.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/raw_api.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/types.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/win64.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/Release/obj/ffi/win_delay_load_hook.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/closure-test.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/closure-test.targets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/closure-test.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/closure-test.vcxproj.filters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/closure-test.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/ffi.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/ffi.targets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/ffi.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/ffi.vcxproj.filters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/ffi.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/libffi.sln" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/test.props" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/test.targets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/test.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/test.vcxproj.filters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/deps/libffi/test.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/ffi_bindings.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/build/ffi_bindings.vcxproj.filters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/bindings/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/bindings/bindings.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/bindings/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/browser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/component.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/node_modules/ms/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/debug/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/asyncworker.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/buffers.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/callback.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/converters.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/errors.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/maybe_types.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/methods.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/new.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/node_misc.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/object_wrappers.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/persistent.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/scopes.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/script.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/string_bytes.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/v8_internals.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/doc/v8_misc.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/include_dirs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_callbacks.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_callbacks_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_callbacks_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_converters.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_converters_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_converters_pre_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_implementation_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_implementation_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_maybe_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_maybe_pre_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_new.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_object_wrap.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_persistent_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_persistent_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_string_bytes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_typedarray_contents.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/nan_weak.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/tools/1to2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/tools/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ffi/node_modules/nan/tools/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.exp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.lib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.pdb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/CL.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/CL.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/CL.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/binding.lastbuildstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/binding.write.1u.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.delete.13.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.delete.7.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.11.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.13.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.14.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.33.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.7.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.read.9.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.write.13.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.write.33.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link-VCTIP.write.7.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link.command.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link.read.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/binding.tlog/link.write.1.tlog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/vc140.pdb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/obj/binding/win_delay_load_hook.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/binding.sln" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/binding.vcxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/build/binding.vcxproj.filters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/bindings/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/bindings/bindings.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/bindings/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/browser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/component.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/node_modules/ms/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/debug/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/asyncworker.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/buffers.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/callback.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/converters.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/errors.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/maybe_types.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/methods.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/new.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/node_misc.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/object_wrappers.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/persistent.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/scopes.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/script.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/string_bytes.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/v8_internals.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/doc/v8_misc.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/include_dirs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_callbacks.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_callbacks_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_callbacks_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_converters.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_converters_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_converters_pre_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_implementation_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_implementation_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_maybe_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_maybe_pre_43_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_new.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_object_wrap.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_persistent_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_persistent_pre_12_inl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_string_bytes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_typedarray_contents.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/nan_weak.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/tools/1to2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/tools/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ref/node_modules/nan/tools/package.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.node" afterPath="$PROJECT_DIR$/node_modules/ref/build/Release/binding.node" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.node" afterPath="$PROJECT_DIR$/node_modules/ffi/build/Release/ffi_bindings.node" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/ref/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/src/binding.cc" afterPath="$PROJECT_DIR$/node_modules/ref/src/binding.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/compile" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/compile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/config.guess" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/config.guess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/build/config.gypi" afterPath="$PROJECT_DIR$/node_modules/ffi/build/config.gypi" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/build/config.gypi" afterPath="$PROJECT_DIR$/node_modules/ref/build/config.gypi" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/config.sub" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/config.sub" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/configure" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/configure" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/depcomp" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/depcomp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/src/arm/gentramp.sh" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/src/arm/gentramp.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/docs/gh-pages.sh" afterPath="$PROJECT_DIR$/node_modules/ref/docs/gh-pages.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/install-sh" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/install-sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/ltmain.sh" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/ltmain.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/missing" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/missing" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/msvcc.sh" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/msvcc.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/package.json" afterPath="$PROJECT_DIR$/node_modules/ffi/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ref/package.json" afterPath="$PROJECT_DIR$/node_modules/ref/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/src/x86/win64.asm" afterPath="$PROJECT_DIR$/node_modules/ffi/deps/libffi/src/x86/win64.asm" />
+    <list default="true" id="3fd1a5f2-df1a-46ff-8d0c-885ba232140a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bassaudio.iws" />
@@ -279,6 +49,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.25">
+              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider editor-type-id="MarkdownFxPreviewEditor">
@@ -286,8 +66,8 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor vertical-scroll-proportion="0.1780822">
-                <caret line="391" column="13" selection-start-line="391" selection-start-column="13" selection-end-line="391" selection-end-column="13" />
+              <first_editor vertical-scroll-proportion="0.29549903">
+                <caret line="395" column="3" selection-start-line="395" selection-start-column="3" selection-end-line="395" selection-end-column="3" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -317,10 +97,10 @@
       <list>
         <option value="$PROJECT_DIR$/fff" />
         <option value="$PROJECT_DIR$/d.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -380,6 +160,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bassaudio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bassaudio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bassaudio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -570,7 +364,13 @@
       <option name="project" value="LOCAL" />
       <updated>1481029780200</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- cleaning">
+      <created>1481029965113</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1481029965113</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -625,7 +425,8 @@
     <MESSAGE value="BASS_GetDevice must take soundcardIndex &#10;getDevice(-1) causes segmentation fault.." />
     <MESSAGE value="- 1.0.0-rc.17&#10;    - BASS_Encode_IsActive fixed" />
     <MESSAGE value="- 1.0.0-rc.18&#10;    - BASS_ChannelGetAttribute returns float pointer. fixed.see getvolume example for usage.&#10;    - BASS_GETInfo now works." />
-    <option name="LAST_COMMIT_MESSAGE" value="- 1.0.0-rc.18&#10;    - BASS_ChannelGetAttribute returns float pointer. fixed.see getvolume example for usage.&#10;    - BASS_GETInfo now works." />
+    <MESSAGE value="- cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="- cleaning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -820,14 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032051284">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -846,6 +639,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="MarkdownFxPreviewEditor">
         <state />
@@ -858,8 +659,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.1780822">
-            <caret line="391" column="13" selection-start-line="391" selection-start-column="13" selection-end-line="391" selection-end-column="13" />
+          <first_editor vertical-scroll-proportion="0.29549903">
+            <caret line="395" column="3" selection-start-line="395" selection-start-column="3" selection-end-line="395" selection-end-column="3" />
             <folding />
           </first_editor>
           <second_editor />
