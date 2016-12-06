@@ -19,6 +19,23 @@ function bass() {
         'flags': ref.types.int64
     })
 
+    this.BASS_INFO = Struct({
+        flags: 'int',
+        hwsize: 'int',
+        hwfree: 'int',
+        freesam: 'int',
+        free3d: 'int',
+        minrate: 'int',
+        maxrate: 'int',
+        eax: 'bool',
+        minbuf: 'int',
+        dsver: 'int',
+        latency: 'int',
+        initflags: 'int',
+        speakers: 'int',
+        freq: 'int'
+    })
+
     this.BASSFlags = {
         BASS_SAMPLE_DEFAULT: 0,
         BASS_SAMPLE_8BITS: 1,	// 8 bit
@@ -63,6 +80,29 @@ function bass() {
         genre: 'byte'
     })
 
+    var BASS_SPEAKER_FRONT = 0x1000000,	// front speakers
+        BASS_SPEAKER_REAR = 0x2000000,	// rear/side speakers
+        BASS_SPEAKER_CENLFE = 0x3000000,	// center & LFE speakers (5.1)
+        BASS_SPEAKER_REAR2 = 0x4000000,	// rear center speakers (7.1)
+        BASS_SPEAKER_LEFT = 0x10000000,	// modifier: left
+        BASS_SPEAKER_RIGHT = 0x20000000	// modifier: right
+
+    this.BASS_SPEAKERtypes = {
+        BASS_SPEAKER_FRONT: BASS_SPEAKER_FRONT,
+        BASS_SPEAKER_REAR: BASS_SPEAKER_REAR,
+        BASS_SPEAKER_CENLFE: BASS_SPEAKER_CENLFE,
+        BASS_SPEAKER_REAR2: BASS_SPEAKER_REAR2,
+        BASS_SPEAKER_LEFT: BASS_SPEAKER_LEFT,
+        BASS_SPEAKER_RIGHT: BASS_SPEAKER_RIGHT,
+        BASS_SPEAKER_FRONTLEFT: BASS_SPEAKER_FRONT | BASS_SPEAKER_LEFT,
+        BASS_SPEAKER_FRONTRIGHT: BASS_SPEAKER_FRONT | BASS_SPEAKER_RIGHT,
+        BASS_SPEAKER_REARLEFT: BASS_SPEAKER_REAR | BASS_SPEAKER_LEFT,
+        BASS_SPEAKER_REARRIGHT: BASS_SPEAKER_REAR | BASS_SPEAKER_RIGHT,
+        BASS_SPEAKER_CENTER: BASS_SPEAKER_CENLFE | BASS_SPEAKER_LEFT,
+        BASS_SPEAKER_LFE: BASS_SPEAKER_CENLFE | BASS_SPEAKER_RIGHT,
+        BASS_SPEAKER_REAR2LEFT: BASS_SPEAKER_REAR2 | BASS_SPEAKER_LEFT,
+        BASS_SPEAKER_REAR2RIGHT: BASS_SPEAKER_REAR2 | BASS_SPEAKER_RIGHT,
+    }
 
     this.BASS_ChannelGetTagtypes = {
         BASS_TAG_ID3: 0,// ID3v1 tags : TAG_ID3 structure
@@ -300,6 +340,8 @@ function bass() {
     var deviceInfoPTR = ref.refType(this.BASS_DEVICEINFO)
     var chanInfoPTR = ref.refType(this.BASS_CHANNELINFO)
     this.idTagPTR = ref.refType(this.ID3V1Tag)
+    var floatPTR = ref.refType(ref.types.float)
+    var infoPTR=ref.refType(this.BASS_INFO)
     var path = require('path')
     var basslibName = ''
     var bassmixlibName = '';
@@ -345,7 +387,7 @@ function bass() {
         BASS_ChannelRemoveSync: ['bool', ['long', 'long']],
         BASS_ChannelIsActive: ['int', ['int']],
         BASS_ChannelSetAttribute: ['bool', ['int', 'int', 'float']],
-        BASS_ChannelGetAttribute: ['bool', ['int', 'int', 'float']],
+        BASS_ChannelGetAttribute: ['bool', ['int', 'int', floatPTR]],
         BASS_ChannelSetSync: ['int', ['int', 'int', 'ulong', 'pointer', ref.types.void]],
         BASS_ChannelSlideAttribute: ['bool', ['long', 'long', 'float', 'long']],
         BASS_ChannelIsSliding: ['bool', ['long', 'long']],
@@ -357,7 +399,7 @@ function bass() {
         BASS_Start: ['bool', []],
         BASS_Stop: ['bool', []],
         BASS_Pause: ['bool', []],
-        BASS_GetInfo: ['bool', ['pointer']],
+        BASS_GetInfo: ['bool', [infoPTR]],
         BASS_ErrorGetCode: ['int', []],
         BASS_Free: ['bool', []],
         BASS_GetCPU: ['float', []],
@@ -423,10 +465,10 @@ bass.prototype.getDevices = function () {
 
 bass.prototype.getDevice = function (device) {
 
-    if(device==-1){
-        var devs=this.getDevices();
-        for(i=0;i<devs.length;i++){
-            if(devs[i].IsDefault){
+    if (device == -1) {
+        var devs = this.getDevices();
+        for (i = 0; i < devs.length; i++) {
+            if (devs[i].IsDefault) {
                 return devs[i]
             }
         }
@@ -727,6 +769,48 @@ bass.prototype.BASS_Encode_CastGetStats = function (handle, type, pass) {
 
 bass.prototype.BASS_Encode_CastSetTitle = function (handle, title, url) {
     return this.basslibencoder.BASS_Encode_CastSetTitle(handle, title, url);
+}
+bass.prototype.getVolume = function (channel) {
+    var volume = this.ref.alloc('float');
+    this.basslib.BASS_ChannelGetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, volume);
+    return this.ref.deref(volume).toFixed(4)
+}
+
+bass.prototype.setVolume = function (channel, newVolume) {
+    return this.basslib.BASS_ChannelSetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, newVolume);
+}
+
+bass.prototype.getPosition = function (channel) {
+    return this.basslib.BASS_ChannelBytes2Seconds(channel, this.basslib.BASS_ChannelGetPosition(channel, 0))
+}
+
+bass.prototype.getDuration = function (channel) {
+    return this.basslib.BASS_ChannelBytes2Seconds(channel, this.basslib.BASS_ChannelGetLength(channel, 0))
+}
+bass.prototype.BASS_GetInfo=function(refinfo){
+    return this.basslib.BASS_GetInfo(refinfo)
+}
+
+bass.prototype.getInfo=function(){
+    var refinfo=this.ref.alloc( this.BASS_INFO);
+    this.basslib.BASS_GetInfo(refinfo)
+    var d=this.ref.deref( refinfo)
+    var o=new Object()
+    o.flags= d.flags
+    o.hwsize= d.hwsize
+    o.hwfree= d.hwfree
+    o.freesam= d.freesam
+    o.free3d= d.free3d
+    o.minrate= d.minrate
+    o.maxrate= d.maxrate
+    o.eax= d.eax
+    o.minbuf= d.minbuf
+    o.dsver= d.dsver
+    o.latency= d.latency
+    o.initflags= d.initflags
+    o.speakers= d.speakers
+    o.freq= d.freq
+    return o;
 }
 //endregion
 

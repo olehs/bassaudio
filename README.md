@@ -202,10 +202,14 @@ setInterval(function(){
 
 **Get Volume of channel**
 ```javascript
+var ref=require('ref')
+//set a float pointer
+var volume=ref.alloc('float');
 //get the volume
-//first get the byte position of volume from attribute
-var volume=0;
-basslib.BASS_ChannelGetAttribute(chan,basslib.BASS_ChannelAttributes.BASS_ATTRIB_VOL,volume);
+var result=basslib.BASS_ChannelGetAttribute(chan,basslib.BASS_ChannelAttributes.BASS_ATTRIB_VOL,volume);
+//now deref volume to get the value
+console.log(ref.deref(volume))
+
 ```
 **Set Volume**
 ```javascript
@@ -402,6 +406,11 @@ i only added methods, properties what i needed.. add yours to the code or send m
 **UPDATE LOG**
 
 **--------------------------------**
+
+- 1.0.0-rc.18
+    - BASS_ChannelGetAttribute returns float pointer. fixed.see getvolume example for usage.
+    - BASS_GETInfo now works. 
+
 
 - 1.0.0-rc.17
     - BASS_Encode_IsActive fixed
