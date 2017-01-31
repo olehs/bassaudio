@@ -87,6 +87,14 @@ function bass() {
         BASS_SPEAKER_LEFT = 0x10000000,	// modifier: left
         BASS_SPEAKER_RIGHT = 0x20000000	// modifier: right
 
+    this.BASS_MIXERsourceflags = {
+        BASS_MIXER_BUFFER: 0x2000,	// buffer data for BASS_Mixer_ChannelGetData/Level
+        BASS_MIXER_LIMIT: 0x4000,	// limit mixer processing to the amount available from this source
+        BASS_MIXER_MATRIX: 0x10000,	// matrix mixing
+        BASS_MIXER_PAUSE: 0x20000,// don't process the source
+        BASS_MIXER_DOWNMIX: 0x400000,// downmix to stereo/mono
+        BASS_MIXER_NORAMPIN: 0x800000 // don't ramp-in the start
+    }
     this.BASS_SPEAKERtypes = {
         BASS_SPEAKER_FRONT: BASS_SPEAKER_FRONT,
         BASS_SPEAKER_REAR: BASS_SPEAKER_REAR,
@@ -341,7 +349,7 @@ function bass() {
     var chanInfoPTR = ref.refType(this.BASS_CHANNELINFO)
     this.idTagPTR = ref.refType(this.ID3V1Tag)
     var floatPTR = ref.refType(ref.types.float)
-    var infoPTR=ref.refType(this.BASS_INFO)
+    var infoPTR = ref.refType(this.BASS_INFO)
     var path = require('path')
     var basslibName = ''
     var bassmixlibName = '';
@@ -787,29 +795,29 @@ bass.prototype.getPosition = function (channel) {
 bass.prototype.getDuration = function (channel) {
     return this.basslib.BASS_ChannelBytes2Seconds(channel, this.basslib.BASS_ChannelGetLength(channel, 0))
 }
-bass.prototype.BASS_GetInfo=function(refinfo){
+bass.prototype.BASS_GetInfo = function (refinfo) {
     return this.basslib.BASS_GetInfo(refinfo)
 }
 
-bass.prototype.getInfo=function(){
-    var refinfo=this.ref.alloc( this.BASS_INFO);
+bass.prototype.getInfo = function () {
+    var refinfo = this.ref.alloc(this.BASS_INFO);
     this.basslib.BASS_GetInfo(refinfo)
-    var d=this.ref.deref( refinfo)
-    var o=new Object()
-    o.flags= d.flags
-    o.hwsize= d.hwsize
-    o.hwfree= d.hwfree
-    o.freesam= d.freesam
-    o.free3d= d.free3d
-    o.minrate= d.minrate
-    o.maxrate= d.maxrate
-    o.eax= d.eax
-    o.minbuf= d.minbuf
-    o.dsver= d.dsver
-    o.latency= d.latency
-    o.initflags= d.initflags
-    o.speakers= d.speakers
-    o.freq= d.freq
+    var d = this.ref.deref(refinfo)
+    var o = new Object()
+    o.flags = d.flags
+    o.hwsize = d.hwsize
+    o.hwfree = d.hwfree
+    o.freesam = d.freesam
+    o.free3d = d.free3d
+    o.minrate = d.minrate
+    o.maxrate = d.maxrate
+    o.eax = d.eax
+    o.minbuf = d.minbuf
+    o.dsver = d.dsver
+    o.latency = d.latency
+    o.initflags = d.initflags
+    o.speakers = d.speakers
+    o.freq = d.freq
     return o;
 }
 //endregion

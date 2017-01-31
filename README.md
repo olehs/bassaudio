@@ -401,12 +401,27 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
 **INFO**
 i only added methods, properties what i needed.. add yours to the code or send me mail..
 
+**IMPORTANT**
+2017-01-31
+please modify node_modules/ffi/lib/library.js if you are using linux os
 
+find 
+```javascript
+ var dl = new DynamicLibrary(libfile || null, RTLD_NOW)
+ ```
+ change it to
+  ```javascript
+  var dl = new DynamicLibrary(libfile || null, RTLD_NOW | DynamicLibrary.FLAGS.RTLD_GLOBAL)
+```
 
 **UPDATE LOG**
 
 **--------------------------------**
 
+- 1.0.0-rc.20
+    - added BASS_MIXERsourceflags
+    - found a bug on ffi source code, see above change for linux os.. 
+    
 - 1.0.0-rc.18
     - BASS_ChannelGetAttribute returns float pointer. fixed.see getvolume example for usage.
     - BASS_GETInfo now works. 
