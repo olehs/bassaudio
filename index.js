@@ -387,10 +387,10 @@ function bass() {
         BASS_ChannelStop: ['int', ['int']],
         BASS_ChannelPause: ['int', ['int']],
         BASS_ChannelGetPosition: ['int', ['int', 'int']],
-        BASS_ChannelSetPosition: ['bool', ['int', 'long', 'int']],
+        BASS_ChannelSetPosition: ['bool', ['int', 'long', ref.types.int64]],
         BASS_ChannelGetLength: ['int', ['int', 'int']],
         BASS_ChannelBytes2Seconds: [ref.types.double, [ref.types.int, ref.types.int64]],
-        BASS_ChannelSeconds2Bytes: [ref.types.double, [ref.types.int, ref.types.int64]],
+        BASS_ChannelSeconds2Bytes: [ref.types.int64, [ref.types.int, ref.types.double]],
         BASS_ChannelGetLevel: ['ulong', ['int']],
         BASS_ChannelRemoveSync: ['bool', ['long', 'long']],
         BASS_ChannelIsActive: ['int', ['int']],
@@ -576,6 +576,7 @@ bass.prototype.BASS_ChannelSetAttribute = function (handle, attrib, value) {
 }
 
 bass.prototype.BASS_ChannelGetAttribute = function (handle, attrib, value) {
+
     return this.basslib.BASS_ChannelGetAttribute(handle, attrib, value);
 }
 
@@ -781,11 +782,12 @@ bass.prototype.BASS_Encode_CastSetTitle = function (handle, title, url) {
 bass.prototype.getVolume = function (channel) {
     var volume = this.ref.alloc('float');
     this.basslib.BASS_ChannelGetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, volume);
-    return this.ref.deref(volume).toFixed(4)
+    return this.ref.deref(volume).toFixed(4)*100
+
 }
 
 bass.prototype.setVolume = function (channel, newVolume) {
-    return this.basslib.BASS_ChannelSetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, newVolume);
+    return this.basslib.BASS_ChannelSetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, newVolume/100);
 }
 
 bass.prototype.getPosition = function (channel) {

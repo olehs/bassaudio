@@ -418,6 +418,12 @@ find
 
 **--------------------------------**
 
+- 1.0.0-rc.21
+    - these fixes are for linux environment
+    - fixed BASS_ChannelBytes2Seconds
+    - fixed BASS_ChannelSeconds2Bytes
+    - fixed BASS_ChannelSetPosition
+
 - 1.0.0-rc.20
     - added BASS_MIXERsourceflags
     - found a bug on ffi source code, see above change for linux os.. 
