@@ -381,7 +381,7 @@ function bass() {
     this.basslib = this.ffi.Library(basslibName, {
         BASS_Init: ['bool', ['int', 'int', 'int', 'int', 'int']],
         BASS_GetVersion: ['int', []],
-        BASS_StreamCreateFile: ['int', ['int', 'string', 'int', 'int', 'int']],
+        BASS_StreamCreateFile: ['int', ['int', 'string', ref.types.int64, ref.types.int64, 'int']],
         BASS_StreamCreateURL: ['int', ['string', 'long', 'long', 'pointer', ref.types.void]],
         BASS_ChannelPlay: ['int', ['int', 'int']],
         BASS_ChannelStop: ['int', ['int']],

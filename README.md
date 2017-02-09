@@ -418,6 +418,9 @@ find
 
 **--------------------------------**
 
+- 1.0.0-rc.22
+    - some types in BASS_StreamCreateFile are changed to ref.types.int64
+
 - 1.0.0-rc.21
     - these fixes are for linux environment
     - fixed BASS_ChannelBytes2Seconds
