@@ -402,8 +402,24 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
 i only added methods, properties what i needed.. add yours to the code or send me mail..
 
 **IMPORTANT**
+
+2017-02-10
+
+please modify node_modules/ffi/lib/callback.js if you are using callbacks.
+ffi garbage collector removes callbacks after 10 seconds. with this modification, callbacks stays on memory
+
+at line 81 , before return, add;
+```javascript
+Object.defineProperty(func, '_func', {value:callback});
+ ```
+
+**--------------------------------**
+
 2017-01-31
-please modify node_modules/ffi/lib/library.js if you are using linux os
+
+please modify node_modules/ffi/lib/library.js if you are using linux os and if you are using addons.
+ffi loads bass into instance, not as global instance.. so the addons could not find main bass on memory. 
+this fixes that issue.. (on windows and macos, it works without this modification)
 
 find 
 ```javascript
@@ -414,9 +430,13 @@ find
   var dl = new DynamicLibrary(libfile || null, RTLD_NOW | DynamicLibrary.FLAGS.RTLD_GLOBAL)
 ```
 
+
 **UPDATE LOG**
 
 **--------------------------------**
+
+- 1.0.0 Release
+    - i hope i fixed everything :) lets cross the fingers.. 
 
 - 1.0.0-rc.22
     - some types in BASS_StreamCreateFile are changed to ref.types.int64

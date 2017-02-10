@@ -1,2 +1,8 @@
 node_modules
 .idea
+libbass.dylib
+libbass_fx.dylib
+libbassenc.dylib
+libbassmix.dylib
+music.mp3
+test.js
