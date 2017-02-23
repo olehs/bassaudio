@@ -1,2 +1,8 @@
 node_modules
-*.log
+.idea
+libbass.dylib
+libbass_fx.dylib
+libbassenc.dylib
+libbassmix.dylib
+*.mp3
+*.so
