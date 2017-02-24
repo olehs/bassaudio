@@ -1,8 +1,7 @@
 node_modules
-.idea
-libbass.dylib
-libbass_fx.dylib
-libbassenc.dylib
-libbassmix.dylib
+.idea/
 *.mp3
+!examples/*.mp3
+*.dylib
 *.so
+*.dll
