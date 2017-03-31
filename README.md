@@ -397,6 +397,48 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
 ```
 
 
+**mono speaker output**
+```javascript
+//lets say if you have 5.1 speaker and want to use each output stereo or mono
+//basically with 5.1 output you can use 6 different output channels. 
+//this example shows how to do it
+ var bass=require('bassaudio')
+ var basslib=new bass();
+ 
+ 
+ //set init to speakers
+ var result=basslib.BASS_Init(-1,44100,basslib.BASS_Initflags.BASS_DEVICE_SPEAKERS)
+ if(!result){
+     console.log('error init sound card:' + basslib.BASS_ErrorGetCode())
+ }
+ 
+ //to use mixer feature, you have to enable it
+ basslib.EnableMixer(true);
+ 
+  var cards=basslib.getDevices();
+  var path=require('path')
+  var f1=path.join(__dirname, '1.mp3')
+ 
+ 
+ //create a mixer and tell it to output front right
+ var mixer=basslib.BASS_Mixer_StreamCreate(44100, 1,basslib.BASS_SPEAKERtypes.BASS_SPEAKER_FRONTRIGHT);
+ console.log('mixer:',mixer,' error code:',basslib.BASS_ErrorGetCode())
+ 
+ //set channel to decode
+ var chan1=basslib.BASS_StreamCreateFile(0,f1,0,0,basslib.BASSFlags.BASS_STREAM_DECODE )
+ 
+ //if your file is stereo , you have to downmix to mono, else you cannot get it mono output to only 1 speaker.
+ var ok1 = basslib.BASS_Mixer_StreamAddChannel(mixer, chan1, basslib.BASS_MIXERsourceflags.BASS_MIXER_DOWNMIX);
+ var ok2=basslib.BASS_ChannelPlay(mixer,0)
+ 
+ 
+ console.log('chan1:',chan1,' error code:',basslib.BASS_ErrorGetCode())
+ console.log('ok1:',ok1,' error code:',basslib.BASS_ErrorGetCode())
+ 
+  setInterval(()=>{},1000)
+``` 
+
+
 
 **INFO**
 i only added methods, properties what i needed.. add yours to the code or send me mail..
@@ -434,6 +476,11 @@ find
 **UPDATE LOG**
 
 **--------------------------------**
+
+- 1.0.1 
+    - some types fixed for raspberrypi compability.
+    - examples folder added
+    - mono speaker out example added
 
 - 1.0.0 Release
     - i hope i fixed everything :) lets cross the fingers.. 
