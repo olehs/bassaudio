@@ -783,10 +783,19 @@ Bass.prototype.BASS_Encode_CastSetTitle = function (handle, title, url) {
 }
 
 Bass.prototype.getVolume = function (channel) {
-    var volume = this.ref.alloc('float');
-    this.basslib.BASS_ChannelGetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, volume);
+    if(channel==0){
+        return 0;
+    }
+   try{
+       var volume = this.ref.alloc('float');
+       this.basslib.BASS_ChannelGetAttribute(channel, this.BASS_ChannelAttributes.BASS_ATTRIB_VOL, volume);
 
-    return this.ref.deref(volume).toFixed(4) * 100;
+       return this.ref.deref(volume).toFixed(4) * 100;
+   }
+   catch(ex){
+       console.log('get volume error:' + ex)
+    return 0;
+   }
 }
 
 Bass.prototype.setVolume = function (channel, newVolume) {

@@ -477,6 +477,9 @@ find
 
 **--------------------------------**
 
+- 1.0.2
+    - getVolume() gives ref error when channel is 0. fixed.
+
 - 1.0.1 
     - some types fixed for raspberrypi compability.
     - examples folder added
