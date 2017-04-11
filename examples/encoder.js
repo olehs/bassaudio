@@ -22,7 +22,7 @@ if (mixerEnabled) {
   process.exit();
 }
 
-
+var filename = path.join(__dirname, "deadmau5-Charlie_cant_dance.mp3");
 var LameModes = {
   Stereo: 2,
   Mono: 1
@@ -96,27 +96,30 @@ if (os.platform() == "win32") {
   // ?????
   lamepath = "\"" + path.join(bassPath.replace("basswrapper", ""), "lame.exe") + "\"";
 }
-
-var lamestr = "lame -r -m s -s 22050 -b 56 -"
+var lamestr = `lame -r -m s -s ${SAMPLE_RATE} -b ${BIT_RATE} -`;
+// var lamestr = "lame -r -m s -s 22050 -b 56 -"
 // var lamestr = lamepath + " -r -m " + (MODE === 2
 //   ? "s"
 //   : "m") + " -s " + SAMPLE_RATE + " -b " + BIT_RATE + " -";
 // region lame config
 
 // BASS_Init
-var init = basslib.BASS_Init(-1, 44100, basslib.BASS_Initflags.BASS_DEVICE_STEREO)
+var init = basslib.BASS_Init(-1, 44100, basslib.BASS_Initflags.BASS_DEVICE_STEREO);
 if (!init) {
-  if (this.bass.BASS_ErrorGetCode() === 2100) { // access denied - passwd incorrect
+  if (basslib.BASS_ErrorGetCode() === 2100) { // access denied - passwd incorrect
     console.log(chalk.bgRed.white.bold("icecast ERROR reason:Access denied to icecast"));
+  } else {
+    console.log(`${chalk.bgRed.white.bold("error init sound card: ")} ${basslib.BASS_ErrorGetCode()}`);
   }
 
-  console.log(`${chalk.bgRed.white.bold("error init sound card: ")} ${basslib.BASS_ErrorGetCode()}`);
   process.exit();
 }
+
 console.log(`${chalk.bgBlue.white.bold("soundcard is init?: ")} ${basslib.getDevice(-1).IsInitialized}`);
 
 // BASS_Mixer_StreamCreate
 var mixerFlag = basslib.BASS_Encode_Startflags.BASS_ENCODE_CAST_NOLIMIT | basslib.BASSFlags.BASS_STREAM_PRESCAN | basslib.BASSFlags.BASS_STREAM_AUTOFREE;
+
 var mixer = basslib.BASS_Mixer_StreamCreate(SAMPLE_RATE, channels.STEREO, mixerFlag);
 if (mixer === 0) {
   console.log(`${chalk.bgRed.white.bold("error at Mixer_StreamCreate: ")} ${basslib.BASS_ErrorGetCode()}`);
@@ -127,7 +130,7 @@ if (mixer === 0) {
 
 // BASS_StreamCreateFile
 var createChannelFlag = basslib.BASSFlags.BASS_STREAM_DECODE | basslib.BASSFlags.BASS_SAMPLE_FLOAT;
-var filename = path.join(__dirname, "futurama.mp3");
+
 var chan = basslib.BASS_StreamCreateFile(false, filename, 0, 0, createChannelFlag);
 if (chan === 0) {
   console.log(`${chalk.bgRed.white.bold("error at BASS_StreamCreateFile: ")} ${basslib.BASS_ErrorGetCode()}`);
@@ -150,7 +153,7 @@ if (!success) {
 }
 
 // BASS_Encode_Start
-var _encoder = basslib.BASS_Encode_Start(mixer, lamestr, 1);
+var _encoder = basslib.BASS_Encode_Start(mixer, lamestr, basslib.BASS_Encode_Startflags.BASS_ENCODE_NOHEAD);
 if (_encoder === 0) {
   console.log(`${chalk.bgRed.white.bold("error at BASS_Encode_Start: ")} ${basslib.BASS_ErrorGetCode()}`);
   process.exit();
@@ -160,7 +163,7 @@ if (_encoder === 0) {
 
 // BASS_Encode_CastInit
 setTimeout(() => {
-  var isCast = basslib.BASS_Encode_CastInit(_encoder, "http://192.168.1.119:8000/deneme", "1q2w3e", "audio/mpeg", "Bassaudio encoder test", "", "", null, null, 96, true);
+  var isCast = basslib.BASS_Encode_CastInit(_encoder, "http://192.168.1.119:8000/deneme", "1q2w3e", "audio/mpeg", "Bassaudio encoder test", "", "", null, null, BIT_RATE, true);
   if (!isCast) {
     console.log(`${chalk.bgRed.white.bold("error at BASS_Encode_CastInit: ")} ${basslib.BASS_ErrorGetCode()}`);
   } else {

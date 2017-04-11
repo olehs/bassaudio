@@ -22,7 +22,7 @@ console.log("first card is init?:" + basslib.getDevice(1).IsInitialized)
 
 // BASS_StreamCreateFile
 
-var filename = path.join(__dirname, "futurama.mp3");
+var filename = path.join(__dirname, "deadmau5-Charlie_cant_dance.mp3");
 var chan = basslib.BASS_StreamCreateFile(false, filename, 0, 0, basslib.BASS_Initflags.BASS_DEVICE_STEREO);
 if (basslib.BASS_ErrorGetCode() !== basslib.BASS_ErrorCode.BASS_OK) {
   console.log(chalk.red.bold("error opening file:"), basslib.BASS_ErrorGetCode());
