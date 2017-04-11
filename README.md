@@ -1,25 +1,25 @@
 **Un4Seen Bass Audio Library Wrapper**
 
-[Bass Audio library](http://www.un4seen.com) is the best audio library to play, edit, convert, stream etc. 
+[Bass Audio library](http://www.un4seen.com) is the best audio library to play, edit, convert, stream etc.
 this wrapper wraps most of the "audio playback" features using [ffi](https://www.npmjs.com/package/ffi) , [ref](https://www.npmjs.com/package/ref) , [ref-struct](https://www.npmjs.com/package/ref-struct) .
 
-ffi enables to call c library methods, properties , callbacks etc. 
+ffi enables to call c library methods, properties , callbacks etc.
 
 **Compatible with?**
 
-tested on MacosX El capitan, windows 32 and 64 bits, ubuntu 14+, raspberrypi 2-3 (armv7), not tested on armv6 but its easy to test, just install and see.. 
+tested on MacosX El capitan, windows 32 and 64 bits, ubuntu 14+, raspberrypi 2-3 (armv7), not tested on armv6 but its easy to test, just install and see..
 related platform binaries can be downloaded from bass web page..
 
-**Warning** 
+**Warning**
 
 Please put the required bass audio library files to root
 folder (`dll` files for windows, `so` files for *nix, `dylib` files for macos)
 
 Download the required dll files from
-[http://www.un4seen.com](http://www.un4seen.com). 
+[http://www.un4seen.com](http://www.un4seen.com).
 i did not include the required files in this module..
 
-Read full documentation of bass from its original help. 
+Read full documentation of bass from its original help.
 i Will only write same simple examples.
 
 **Features:**
@@ -113,7 +113,7 @@ i Will only write same simple examples.
 - BASS_Mixer_ChannelSetPosition
 
 - BASS_Mixer_ChannelSetSync
-       
+
 - BASS_Encode_Start
 
 - BASS_Encode_IsActive
@@ -130,7 +130,7 @@ i Will only write same simple examples.
 
 - BASS_Encode_CastSetTitle
 
-**Extra:** 
+**Extra:**
 
 SYNCPROC also implemented
 
@@ -142,11 +142,11 @@ Install with npm :
 **Examples**
 
 
-**basic load and play file** 
+**basic load and play file**
 ```javascript
-var bass=require('bassaudio'); 
+var bass=require('bassaudio');
 var basslib=new bass();
- 
+
  //get all sound cards
  var cards=basslib.getDevices();
  console.log('total found sound cards:' + cards.length)
@@ -155,7 +155,7 @@ var basslib=new bass();
  //you will see that card isInitialized will be false, because we did not init it yet..
  var card=cards[1];
  console.log(card.name + ' is enabled:' + card.enabled + ' ,IsDefault:' + card.IsDefault + ' , IsInitialized:' + card.IsInitialized + ' ,typeSpeakers:' + card.typeSpeakers)
- 
+
 // [device],[freq],[flags] , -1 is default sound card
 var result=basslib.BASS_Init(-1,44100,basslib.BASS_Initflags.BASS_DEVICE_STEREO)
 if(!result){
@@ -171,7 +171,7 @@ if(basslib.BASS_ErrorGetCode()!=basslib.BASS_ErrorCode.BASS_OK){
 }
 
 //lets play
-//channel,restart   , returns  (also there are stop , pause commands) 
+//channel,restart   , returns  (also there are stop , pause commands)
 var success=basslib.BASS_ChannelPlay(chan,-1)
 if(!success){
   console.log('error playing file:' + basslib.BASS_ErrorGetCode())
@@ -180,7 +180,7 @@ if(!success){
 
 **Get Duration**
 ```javascript
-//get the duration, bass returns the total bytes of the channel pointer, then we must convert it to seconds :) 
+//get the duration, bass returns the total bytes of the channel pointer, then we must convert it to seconds :)
 var durationInBytes= basslib.BASS_ChannelGetLength(chan,0)
 var durationInSeconds=basslib.BASS_ChannelBytes2Seconds(chan,durationInBytes)
 ```
@@ -251,14 +251,14 @@ basslib.BASS_ChannelSlideAttribute(chan,basslib.BASS_ChannelAttributes.BASS_ATTR
 //lets make a callback when position reaches to 20. seconds.
 var Pos20SecondsBytePos=basslib.BASS_ChannelSeconds2Bytes(chan,20);
 var proc20SecondsID=basslib.BASS_ChannelSetSync(chan,basslib.BASS_ChannelSyncTypes.BASS_SYNC_POS,Pos20SecondsBytePos,function(handle,channel,data,user){
-   if(handle==proc20SecondsID){ 
+   if(handle==proc20SecondsID){
       console.log('position reached to the 20 seconds..')
    }
 })
 
 //lets get the event when the position reaches to end
 var procTOENDID=basslib.BASS_ChannelSetSync(chan,basslib.BASS_ChannelSyncTypes.BASS_SYNC_END,0,function(handle,channel,data,user){
-   if(handle==procTOENDID){ 
+   if(handle==procTOENDID){
       console.log('playback finished..')
    }
 })
@@ -304,8 +304,8 @@ if(basslib.BASS_ChannelIsActive(chan)==basslib.BASS_ChannelIsActiveAttribs.BASS_
   if(!success){
       console.log('error init sound card:' + basslib.BASS_ErrorGetCode())
    }
- ``` 
- 
+ ```
+
 **Info of a channel**
 ```javascript
 var info=    basslib.BASS_ChannelGetInfo(chan);
@@ -313,7 +313,7 @@ console.log('info.ctype:' + info.ctype)
     console.log("is channel an mp3 stream?:" + (info.ctype ==basslib.BASS_CHANNELINFOtypes.BASS_CTYPE_STREAM_MP3))
 //other infos are: freq,chans,flags,ctype,origres,plugin,sample,filename
 ```
-   
+
 **Free the memory from bass**  
 ```javascript
    basslib.BASS_Free();
@@ -357,9 +357,9 @@ var position=basslib.BASS_ChannelBytes2Seconds(chan,positionInBytes);
 
 you can directly encode and send output to [shotcast](http://www.shoutcast.com) and [icecast](http://www.icecast.org) servers
 
-use mixer as a trick, because if the channel freed or added new channel, the encoder stops itself. 
+use mixer as a trick, because if the channel freed or added new channel, the encoder stops itself.
 
-add channels to mixer every time, and add mixer channel to encoder. so the encoder never stops.. 
+add channels to mixer every time, and add mixer channel to encoder. so the encoder never stops..
 
 **Init encoder**
 ```javascript
@@ -400,43 +400,43 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
 **mono speaker output**
 ```javascript
 //lets say if you have 5.1 speaker and want to use each output stereo or mono
-//basically with 5.1 output you can use 6 different output channels. 
+//basically with 5.1 output you can use 6 different output channels.
 //this example shows how to do it
  var bass=require('bassaudio')
  var basslib=new bass();
- 
- 
+
+
  //set init to speakers
  var result=basslib.BASS_Init(-1,44100,basslib.BASS_Initflags.BASS_DEVICE_SPEAKERS)
  if(!result){
      console.log('error init sound card:' + basslib.BASS_ErrorGetCode())
  }
- 
+
  //to use mixer feature, you have to enable it
  basslib.EnableMixer(true);
- 
+
   var cards=basslib.getDevices();
   var path=require('path')
   var f1=path.join(__dirname, '1.mp3')
- 
- 
+
+
  //create a mixer and tell it to output front right
  var mixer=basslib.BASS_Mixer_StreamCreate(44100, 1,basslib.BASS_SPEAKERtypes.BASS_SPEAKER_FRONTRIGHT);
  console.log('mixer:',mixer,' error code:',basslib.BASS_ErrorGetCode())
- 
+
  //set channel to decode
  var chan1=basslib.BASS_StreamCreateFile(0,f1,0,0,basslib.BASSFlags.BASS_STREAM_DECODE )
- 
+
  //if your file is stereo , you have to downmix to mono, else you cannot get it mono output to only 1 speaker.
  var ok1 = basslib.BASS_Mixer_StreamAddChannel(mixer, chan1, basslib.BASS_MIXERsourceflags.BASS_MIXER_DOWNMIX);
  var ok2=basslib.BASS_ChannelPlay(mixer,0)
- 
- 
+
+
  console.log('chan1:',chan1,' error code:',basslib.BASS_ErrorGetCode())
  console.log('ok1:',ok1,' error code:',basslib.BASS_ErrorGetCode())
- 
+
   setInterval(()=>{},1000)
-``` 
+```
 
 
 
@@ -460,10 +460,10 @@ Object.defineProperty(func, '_func', {value:callback});
 2017-01-31
 
 please modify node_modules/ffi/lib/library.js if you are using linux os and if you are using addons.
-ffi loads bass into instance, not as global instance.. so the addons could not find main bass on memory. 
+ffi loads bass into instance, not as global instance.. so the addons could not find main bass on memory.
 this fixes that issue.. (on windows and macos, it works without this modification)
 
-find 
+find
 ```javascript
  var dl = new DynamicLibrary(libfile || null, RTLD_NOW)
  ```
@@ -477,16 +477,20 @@ find
 
 **--------------------------------**
 
+- 1.0.3
+    - constructor now accepts and options object
+    - examples folder comes with link files
+
 - 1.0.2
     - getVolume() gives ref error when channel is 0. fixed.
 
-- 1.0.1 
+- 1.0.1
     - some types fixed for raspberrypi compability.
     - examples folder added
     - mono speaker out example added
 
 - 1.0.0 Release
-    - i hope i fixed everything :) lets cross the fingers.. 
+    - i hope i fixed everything :) lets cross the fingers..
 
 - 1.0.0-rc.22
     - some types in BASS_StreamCreateFile are changed to ref.types.int64
@@ -499,11 +503,11 @@ find
 
 - 1.0.0-rc.20
     - added BASS_MIXERsourceflags
-    - found a bug on ffi source code, see above change for linux os.. 
-    
+    - found a bug on ffi source code, see above change for linux os..
+
 - 1.0.0-rc.18
     - BASS_ChannelGetAttribute returns float pointer. fixed.see getvolume example for usage.
-    - BASS_GETInfo now works. 
+    - BASS_GETInfo now works.
 
 
 - 1.0.0-rc.17
@@ -531,7 +535,7 @@ find
         - BASS_Mixer_ChannelRemoveSync
         - BASS_Mixer_ChannelSetPosition
         - BASS_Mixer_ChannelSetSync
-        
+
      - new encoder features:
         - BASS_Encode_Start
         - BASS_Encode_IsActive
@@ -541,7 +545,7 @@ find
         - BASS_Encode_CastInit
         - BASS_Encode_CastGetStats
         - BASS_Encode_CastSetTitle
-       
+
 - 1.0.0-rc.12
-    
+
     - BASS_ChannelBytes2Seconds and BASS_ChannelSeconds2Bytes returns wrong on arm cpu. pos value type changed to int64. now works correctly

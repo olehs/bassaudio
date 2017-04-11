@@ -169,11 +169,13 @@ if (_encoder === 0) {
 
 // BASS_Encode_CastInit
 setTimeout(() => {
-  var isCast = basslib.BASS_Encode_CastInit(_encoder, "http://192.168.1.119:8000/deneme", "1q2w3e", "audio/mpeg", "Bassaudio encoder test", "", "", null, null, BIT_RATE, true);
+  var URL = "http://192.168.1.119:8000/deneme";
+
+  var isCast = basslib.BASS_Encode_CastInit(_encoder, URL, "1q2w3e", "audio/mpeg", "Bassaudio encoder test", "", "", null, null, BIT_RATE, true);
   if (!isCast) {
     console.log(`${chalk.bgRed.white.bold("error at BASS_Encode_CastInit: ")} ${basslib.BASS_ErrorGetCode()}`);
   } else {
-    console.log(chalk.bgGreen.white.bold("CastInit success"));
+    console.log(chalk.bgGreen.white.bold("CastInit success"), `listen @ ${URL}`);
   }
 }, 5000);
 
