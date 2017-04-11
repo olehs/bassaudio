@@ -3,10 +3,14 @@ var Struct = require('ref-struct');
 var ref = require('ref');
 var ffi = require('ffi');
 
-function Bass() {
+function Bass(options) {
 
     this.ref = ref;
     this.ffi = ffi;
+
+    options = options || {};
+    // basePath must be a valid *absolute* path
+    options.basePath = options.basePath || process.cwd();
 
     var bass = ref.types.void;
     var dword = ref.refType(bass);
@@ -381,9 +385,9 @@ function Bass() {
         bassmixlibName = 'libbassmix.so';
         bassenclibName = 'libbassenc.so';
     }
-    basslibName = path.join(process.cwd(), basslibName);
-    bassmixlibName = path.join(process.cwd(), bassmixlibName);
-    bassenclibName = path.join(process.cwd(), bassenclibName);
+    basslibName = path.join(options.basePath, basslibName);
+    bassmixlibName = path.join(options.basePath, bassmixlibName);
+    bassenclibName = path.join(options.basePath, bassenclibName);
     this.bassenclibName = bassenclibName;
     this.bassmixlibName = bassmixlibName;
 

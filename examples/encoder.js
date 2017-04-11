@@ -2,7 +2,13 @@ var os = require("os");
 var chalk = require("chalk");
 var path = require("path");
 var bass = require("../index");
-var basslib = new bass();
+
+var libPath = `${process.platform}-${process.arch}`;
+var options = {
+  basePath: path.join(__dirname, "libbass", libPath),
+}
+var basslib = new bass(options);
+
 basslib.EnableMixer(true);
 basslib.EnableEncoder(true);
 
