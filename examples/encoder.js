@@ -100,7 +100,7 @@ var BIT_RATE = BitRates.kbps_56;
 var lamepath = "lame";
 if (os.platform() == "win32") {
   // ?????
-  lamepath = "\"" + path.join(bassPath.replace("basswrapper", ""), "lame.exe") + "\"";
+  lamepath = "\"" + path.join(process.cwd(), "lame.exe") + "\"";
 }
 var lamestr = `lame -r -m s -s ${SAMPLE_RATE} -b ${BIT_RATE} -`;
 // var lamestr = "lame -r -m s -s 22050 -b 56 -"
