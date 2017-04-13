@@ -22,8 +22,6 @@ module.exports = () => {
       if (changedFiles[0]) {
         console.log(chalk.red.bold("APPLYING SHIM"));
         console.log(chalk.blue.bold.underline(`Modified: ${o.files}`));
-      } else {
-        console.log(chalk.green.bold(`Shim already applied. ${o.files} not modified.`));
       }
     } catch(err) {
       throw new Error(`Error during shim | ${err}`);
