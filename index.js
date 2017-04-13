@@ -791,7 +791,15 @@ Bass.prototype.BASS_Encode_CastGetStats = function (handle, type, pass) {
 }
 
 Bass.prototype.BASS_Encode_CastSetTitle = function (handle, title, url) {
-    return this.basslibencoder.BASS_Encode_CastSetTitle(handle, title, url);
+    if(this.basslibencoder==null){
+        this.EnableEncoder(true);
+        //   return;
+    }
+    if(handle!=null){
+        return this.basslibencoder.BASS_Encode_CastSetTitle(handle, title, url);
+    }
+    else{return false;}
+
 }
 
 Bass.prototype.getVolume = function (channel) {

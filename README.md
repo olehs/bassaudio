@@ -480,6 +480,9 @@ find
     - lock installed "ffi" version
     - add shim to automate the changes to the "ffi" source code
 
+- 1.0.4
+    - BASS_Encode_CastSetTitle has a minor bug. fixed.
+
 - 1.0.3
     - constructor now accepts and options object
     - examples folder comes with link files
