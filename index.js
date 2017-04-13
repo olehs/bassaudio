@@ -753,7 +753,7 @@ Bass.prototype.EnableEncoder = function (value) {
             BASS_Encode_SetNotify: ['bool', ['int', 'pointer', this.ref.types.void]],
             BASS_Encode_SetPaused: ['bool', ['int', 'bool']],
             BASS_Encode_Stop: ['bool', ['int']],
-            BASS_Encode_CastInit: ['bool', [ref.types.int64, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'int', 'bool']],
+            BASS_Encode_CastInit: ['bool', ['int', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'int', 'bool']],
             BASS_Encode_CastGetStats: ['string', ['int', 'int', 'string']],
             BASS_Encode_CastSetTitle: ['bool', ['int', 'string', 'string']]
         });

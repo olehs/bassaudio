@@ -28,7 +28,7 @@ var channels = {
 }
 
 // BASS_Init
-var init = basslib.BASS_Init(-1, 44100, basslib.BASS_Initflags.BASS_DEVICE_STEREO)
+var init = basslib.BASS_Init(-1, 44100, basslib.BASS_Initflags.BASS_DEVICE_STEREO);
 if (!init) {
   console.log(`${chalk.bgRed.white.bold("error init sound card: ")} ${basslib.BASS_ErrorGetCode()}`);
   process.exit();

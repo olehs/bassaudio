@@ -445,6 +445,9 @@ i only added methods, properties what i needed.. add yours to the code or send m
 
 **IMPORTANT**
 
+****Below modifications are now handled internally. You shouldn't need to do these manually. However, if you do, you know where to find them.****
+
+
 2017-02-10
 
 please modify node_modules/ffi/lib/callback.js if you are using callbacks.
@@ -476,7 +479,10 @@ find
 **UPDATE LOG**
 
 **--------------------------------**
-- 1.0.4
+- 1.0.6
+    - correct an arg type in BASS_Encode_CastInit handler
+
+- 1.0.5
     - lock installed "ffi" version
     - add shim to automate the changes to the "ffi" source code
 

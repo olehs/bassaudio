@@ -96,29 +96,16 @@ var MODE = LameModes.Stereo;
 var SAMPLE_RATE = SampleRates.Hz_22050;
 var BIT_RATE = BitRates.kbps_56;
 
-// region lame config
 var lamepath = "lame";
-if (os.platform() == "win32") {
-  // ?????
+if (os.platform() === "win32") {
   lamepath = "\"" + path.join(process.cwd(), "lame.exe") + "\"";
 }
 var lamestr = `lame -r -m s -s ${SAMPLE_RATE} -b ${BIT_RATE} -`;
-// var lamestr = "lame -r -m s -s 22050 -b 56 -"
-// var lamestr = lamepath + " -r -m " + (MODE === 2
-//   ? "s"
-//   : "m") + " -s " + SAMPLE_RATE + " -b " + BIT_RATE + " -";
-// region lame config
 
 // BASS_Init
 var init = basslib.BASS_Init(-1, 44100, basslib.BASS_Initflags.BASS_DEVICE_STEREO);
 if (!init) {
-  if (basslib.BASS_ErrorGetCode() === 2100) { // access denied - passwd incorrect
-    console.log(chalk.bgRed.white.bold("icecast ERROR reason:Access denied to icecast"));
-  } else {
-    console.log(`${chalk.bgRed.white.bold("error init sound card: ")} ${basslib.BASS_ErrorGetCode()}`);
-  }
-
-  process.exit();
+  console.log(`${chalk.bgRed.white.bold("error init sound card: ")} ${basslib.BASS_ErrorGetCode()}`);
 }
 
 console.log(`${chalk.bgBlue.white.bold("soundcard is init?: ")} ${basslib.getDevice(-1).IsInitialized}`);
@@ -142,7 +129,7 @@ if (chan === 0) {
   console.log(`${chalk.bgRed.white.bold("error at BASS_StreamCreateFile: ")} ${basslib.BASS_ErrorGetCode()}`);
   process.exit();
 } else {
-  console.log(`${chalk.bgBlue.white.bold("chan1: ")} ${chan}`);
+  console.log(`${chalk.bgBlue.white.bold("chan: ")} ${chan}`);
 }
 
 // BASS_Mixer_StreamAddChannel
@@ -170,9 +157,13 @@ if (_encoder === 0) {
 // BASS_Encode_CastInit
 setTimeout(() => {
   var URL = "http://192.168.1.119:8000/deneme";
-
   var isCast = basslib.BASS_Encode_CastInit(_encoder, URL, "1q2w3e", "audio/mpeg", "Bassaudio encoder test", "", "", null, null, BIT_RATE, true);
+
   if (!isCast) {
+    if (basslib.BASS_ErrorGetCode() === 2100) { // access denied - passwd incorrect
+      return console.log(chalk.bgRed.white.bold("icecast ERROR reason:Access denied to icecast"));
+    }
+
     console.log(`${chalk.bgRed.white.bold("error at BASS_Encode_CastInit: ")} ${basslib.BASS_ErrorGetCode()}`);
   } else {
     console.log(chalk.bgGreen.white.bold("CastInit success"), `listen @ ${URL}`);
