@@ -476,6 +476,9 @@ find
 **UPDATE LOG**
 
 **--------------------------------**
+- 1.0.4
+    - lock installed "ffi" version
+    - add shim to automate the changes to the "ffi" source code
 
 - 1.0.3
     - constructor now accepts and options object

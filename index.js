@@ -1,3 +1,11 @@
+var chalk = require("chalk");
+var applyShim = require("./shim.js");
+try {
+  applyShim();
+} catch(err) {
+  console.error(chalk.bgRed.white.bold(err));
+}
+
 var path = require('path');
 var Struct = require('ref-struct');
 var ref = require('ref');
