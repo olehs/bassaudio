@@ -47,6 +47,50 @@ function Bass(options) {
         freq: 'int'
     });
 
+    this.BASS_SetConfigflags={
+        BASS_CONFIG_BUFFER			:0,
+        BASS_CONFIG_UPDATEPERIOD	:1,
+        BASS_CONFIG_GVOL_SAMPLE		:4,
+        BASS_CONFIG_GVOL_STREAM		:5,
+        BASS_CONFIG_GVOL_MUSIC		:6,
+        BASS_CONFIG_CURVE_VOL		:7,
+        BASS_CONFIG_CURVE_PAN		:8,
+        BASS_CONFIG_FLOATDSP		:9,
+        BASS_CONFIG_3DALGORITHM		:10,
+        BASS_CONFIG_NET_TIMEOUT		:11,
+        BASS_CONFIG_NET_BUFFER		:12,
+        BASS_CONFIG_PAUSE_NOPLAY	:13,
+        BASS_CONFIG_NET_PREBUF		:15,
+        BASS_CONFIG_NET_PASSIVE		:18,
+        BASS_CONFIG_REC_BUFFER		:19,
+        BASS_CONFIG_NET_PLAYLIST	:21,
+        BASS_CONFIG_MUSIC_VIRTUAL	:22,
+        BASS_CONFIG_VERIFY			:23,
+        BASS_CONFIG_UPDATETHREADS	:24,
+        BASS_CONFIG_DEV_BUFFER		:27,
+        BASS_CONFIG_VISTA_TRUEPOS	:30,
+        BASS_CONFIG_IOS_MIXAUDIO	:34,
+        BASS_CONFIG_DEV_DEFAULT		:36,
+        BASS_CONFIG_NET_READTIMEOUT	:37,
+        BASS_CONFIG_VISTA_SPEAKERS	:38,
+        BASS_CONFIG_IOS_SPEAKER		:39,
+        BASS_CONFIG_MF_DISABLE		:40,
+        BASS_CONFIG_HANDLES			:41,
+        BASS_CONFIG_UNICODE			:42,
+        BASS_CONFIG_SRC				:43,
+        BASS_CONFIG_SRC_SAMPLE		:44,
+        BASS_CONFIG_ASYNCFILE_BUFFER :45,
+        BASS_CONFIG_OGG_PRESCAN		:47,
+        BASS_CONFIG_MF_VIDEO		:48,
+        BASS_CONFIG_AIRPLAY			:49,
+        BASS_CONFIG_DEV_NONSTOP		:50,
+        BASS_CONFIG_IOS_NOCATEGORY	:51,
+        BASS_CONFIG_VERIFY_NET		:52,
+        BASS_CONFIG_DEV_PERIOD		:53,
+        BASS_CONFIG_FLOAT			:54,
+        BASS_CONFIG_NET_SEEK		:56
+    }
+
     this.BASS_POSITIONflags = {
         BASS_POS_BYTE: 0, // byte position
         BASS_POS_MUSIC_ORDER: 1, // order.row position, MAKELONG(order,row)
@@ -438,7 +482,11 @@ function Bass(options) {
         BASS_GetDevice: ['int', []],
         BASS_GetDeviceInfo: ['bool', ['int', deviceInfoPTR]],
         BASS_ChannelGetTags: ['string', ['int', 'int']],
-        BASS_ChannelGetInfo: ['bool', ['int', chanInfoPTR]]
+        BASS_ChannelGetInfo: ['bool', ['int', chanInfoPTR]],
+        BASS_SetConfig:['bool',['int','int']],
+        BASS_GetConfig:['int',['int']],
+        BASS_Update:['bool',['int']],
+        BASS_ChannelUpdate:['bool',['int','int']]
     });
 
     // mixer_streamCreate, mixer_streamADdChannel,
@@ -528,6 +576,19 @@ Bass.prototype.getDevice = function (device) {
     o.typeSpeakers = (info.flags & this.BASS_DEVICEINFOflags.BASS_DEVICE_TYPE_SPEAKERS) == this.BASS_DEVICEINFOflags.BASS_DEVICE_TYPE_SPEAKERS;
 
     return o;
+}
+
+Bass.prototype.BASS_SetConfig=function(option,value){
+    return this.basslib.BASS_SetConfig(option,value);
+}
+Bass.prototype.BASS_GetConfig=function(option){
+    return this.basslib.BASS_GetConfig(option);
+}
+Bass.prototype.BASS_ChannelUpdate=function(handle,length){
+    return this.basslib.BASS_ChannelUpdate(handle,length);
+}
+Bass.prototype.BASS_Update=function(length){
+    return this.basslib.BASS_Update(length);
 }
 
 

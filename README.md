@@ -314,6 +314,15 @@ console.log('info.ctype:' + info.ctype)
 //other infos are: freq,chans,flags,ctype,origres,plugin,sample,filename
 ```
 
+**Info of a device**
+```javascript
+var info=    basslib.getInfo();
+console.log('speaker count:' + info.speakers)
+console.log('minimum buffer:' + info.minbuf)
+console.log('latency:' + info.latency)
+```
+
+
 **Free the memory from bass**  
 ```javascript
    basslib.BASS_Free();
@@ -416,6 +425,8 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
  basslib.EnableMixer(true);
 
   var cards=basslib.getDevices();
+  var speakerCount=basslib.getInfo().speakers;
+  console.log('we have',speakerCount,'speakers')
   var path=require('path')
   var f1=path.join(__dirname, '1.mp3')
 
@@ -479,6 +490,15 @@ find
 **UPDATE LOG**
 
 **--------------------------------**
+
+
+- 1.0.7
+    - BASS_SetConfigflags,
+    BASS_SetConfig, 
+    BASS_GetConfig, 
+    BASS_Update, 
+    BASS_ChannelUpdate features added
+
 - 1.0.6
     - correct an arg type in BASS_Encode_CastInit handler
 
