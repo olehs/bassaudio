@@ -18,7 +18,7 @@ if (mixerEnabled) {
   process.exit();
 }
 
-var filename = path.join(__dirname, "deadmau5-Charlie_cant_dance.mp3");
+var filename = path.join(__dirname, "../music.mp3");
 var channels = {
   "MONO": 1,
   "STEREO": 2,

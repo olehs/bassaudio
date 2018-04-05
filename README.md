@@ -130,6 +130,18 @@ i Will only write same simple examples.
 
 - BASS_Encode_CastSetTitle
 
+- BASS_Split_StreamCreate
+
+- BASS_Split_StreamGetAvailable
+
+- BASS_Split_StreamGetSource
+
+- BASS_Split_StreamGetSplits
+
+- BASS_Split_StreamReset
+
+- BASS_Split_StreamResetEx
+
 **Extra:**
 
 SYNCPROC also implemented
@@ -377,14 +389,14 @@ var mixer=basslib.BASS_Mixer_StreamCreate(44100, 2,basslib.BASSFlags.BASS_SAMPLE
 var chan=basslib.BASS_StreamCreateFile(0,'d:\\mp3\\tes1.mp3',0,0,basslib.BASSFlags.BASS_STREAM_DECODE | basslib.BASSFlags.BASS_SAMPLE_FLOAT)
 var ok = basslib.BASS_Mixer_StreamAddChannel(mixer, chan, basslib.BASSFlags.BASS_SAMPLE_DEFAULT);
 
-bass.EnableEncoder(true);
+basslib.EnableEncoder(true);
 
 //lets try icecast
-var enc_chan=basslib.BASS_Encode_Start(mixer,'lame -r -m s -s 22050 -b 56 -',bass.BASS_Encode_Startflags.BASS_ENCODE_NOHEAD);
+var enc_chan=basslib.BASS_Encode_Start(mixer,'lame -r -m s -s 22050 -b 56 -',basslib.BASS_Encode_Startflags.BASS_ENCODE_NOHEAD);
 var result=basslib.BASS_Encode_CastInit(enc_chan,
                                      'http://server-ip:8000/test',
                                      'password',
-                                     bass.BASS_Encode_CastInitcontentMIMEtypes.BASS_ENCODE_TYPE_MP3,
+                                     basslib.BASS_Encode_CastInitcontentMIMEtypes.BASS_ENCODE_TYPE_MP3,
                                      'test stream',
                                      'http://your-server-ip',
                                      'pop',
@@ -451,6 +463,20 @@ var result=basslib.BASS_Encode_SetNotify(enc_chan,function(handle,status,user){
 
 
 
+**splitting channels**
+```javascript
+//if you want to add a mixer to another mixer, it is not possible/supported
+//but there is another way to do it.
+//you can split any channel or mixer into two, then you can use the new splitted channel on any other mixer.
+//A "splitter" basically does the opposite of a mixer: it splits a single source into multiple streams rather then mixing multiple sources into a single stream. Like mixer sources, splitter sources must be decoding channels.
+
+var splitChan=basslib.BASS_Split_StreamCreate(mixer,0)
+var splits=basslib.BASS_Split_StreamGetSplits(mixer)
+var splitsource=basslib.BASS_Split_StreamGetSource(splitChan)
+var avail1=basslib.BASS_Split_StreamGetAvailable(splitChan)
+var avail2=basslib.BASS_Split_StreamGetAvailable(mixer)
+```
+
 **INFO**
 i only added methods, properties what i needed.. add yours to the code or send me mail..
 
@@ -491,6 +517,21 @@ find
 
 **--------------------------------**
 
+- 1.0.8
+
+    new features added:
+
+    - BASS_Split_StreamCreate
+
+    - BASS_Split_StreamGetAvailable
+
+    - BASS_Split_StreamGetSource
+
+    - BASS_Split_StreamGetSplits
+
+    - BASS_Split_StreamReset
+
+    - BASS_Split_StreamResetEx
 
 - 1.0.7
     - BASS_SetConfigflags,

@@ -446,6 +446,8 @@ function Bass(options) {
     this.basslibmixer = null;
     this.basslibencoder = null;
 
+    this.ArrayType = require('ref-array')
+
     this.basslib = this.ffi.Library(basslibName, {
         BASS_Init: ['bool', ['int', 'int', 'int', 'int', 'int']],
         BASS_GetVersion: ['int', []],
@@ -744,6 +746,38 @@ Bass.prototype.BASS_ChannelGetTags = function (handle, tags) {
     return t;
 }
 
+//----------------------- Split Functions -----------------------------
+Bass.prototype.BASS_Split_StreamCreate=function(handle,flags){
+    var myArr=this.ArrayType(this.ref.types.int)
+    var arr=new myArr(3)
+    arr[0]=1
+    arr[1]=0
+    arr[2]=-1
+    var buff=new Buffer(arr)
+    var q= this.basslibmixer.BASS_Split_StreamCreate(handle,flags,null)
+    return q
+}
+Bass.prototype.BASS_Split_StreamGetAvailable=function(handle){
+    return this.basslibmixer.BASS_Split_StreamGetAvailable(handle)
+}
+Bass.prototype.BASS_Split_StreamGetSource=function(handle){
+    return this.basslibmixer.BASS_Split_StreamGetSource(handle)
+}
+Bass.prototype.BASS_Split_StreamGetSplits=function(handle,count){
+    var myArr=this.ArrayType(this.ref.types.int)
+    var buff=new Buffer(myArr)
+    var q= this.basslibmixer.BASS_Split_StreamGetSplits(handle,buff,count)
+    var arr = Array.prototype.slice.call(buff, 0)
+    return arr;
+}
+Bass.prototype.BASS_Split_StreamReset=function(handle){
+    return this.basslibmixer.BASS_Split_StreamReset(handle)
+}
+Bass.prototype.BASS_Split_StreamResetEx=function(handle,offset){
+    return this.basslibmixer.BASS_Split_StreamResetEx(handle,offset)
+}
+//----------------------- /Split Functions -----------------------------
+
 Bass.prototype.BASS_Mixer_StreamCreate = function (freq, chans, flags) {
     return this.basslibmixer.BASS_Mixer_StreamCreate(freq, chans, flags);
 }
@@ -795,7 +829,13 @@ Bass.prototype.EnableMixer = function (value) {
             BASS_Mixer_ChannelRemove: ['bool', ['int']],
             BASS_Mixer_ChannelRemoveSync: ['bool', ['int', 'int']],
             BASS_Mixer_ChannelSetPosition: ['bool', ['int', ref.types.int64, 'int']],
-            BASS_Mixer_ChannelSetSync: ['int', ['int', 'int', ref.types.int64, 'pointer', this.ref.types.void]]
+            BASS_Mixer_ChannelSetSync: ['int', ['int', 'int', ref.types.int64, 'pointer', this.ref.types.void]],
+            BASS_Split_StreamCreate:['int',['int','int','pointer']],
+            BASS_Split_StreamGetAvailable:['int',['int']],
+            BASS_Split_StreamGetSource:['int',['int']],
+            BASS_Split_StreamReset:['bool',['int']],
+            BASS_Split_StreamResetEx:['bool',['int','int']],
+            BASS_Split_StreamGetSplits:['int',['int','pointer','int']]
         });
     } else {
         this.basslibmixer = null;
