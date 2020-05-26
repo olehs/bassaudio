@@ -2,3 +2,5 @@ node_modules
 .idea
 music.mp3
 test.js
+yarn.lock
+package-lock.json

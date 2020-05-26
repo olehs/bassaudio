@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/serkanp/bassaudio.git"
+    "url": "https://github.com/olehs/bassaudio.git"
   },
   "keywords": [
     "bass",
@@ -28,10 +28,10 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
-    "ffi": "2.2.0",
-    "ref": "^1.3.2",
-    "ref-array": "^1.2.0",
-    "ref-struct": "^1.1.0",
+    "ffi-napi": "^3.0.0",
+    "ref-array-napi": "^1.2.1",
+    "ref-napi": "^2.0.1",
+    "ref-struct-napi": "^1.1.1",
     "replace-in-file": "^2.5.0"
   }
 }

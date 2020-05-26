@@ -7,9 +7,9 @@ try {
 }
 
 var path = require('path');
-var Struct = require('ref-struct');
-var ref = require('ref');
-var ffi = require('ffi');
+var Struct = require('ref-struct-napi');
+var ref = require('ref-napi');
+var ffi = require('ffi-napi');
 
 function Bass(options) {
 
@@ -446,7 +446,7 @@ function Bass(options) {
     this.basslibmixer = null;
     this.basslibencoder = null;
 
-    this.ArrayType = require('ref-array')
+    this.ArrayType = require('ref-array-napi')
 
     this.basslib = this.ffi.Library(basslibName, {
         BASS_Init: ['bool', ['int', 'int', 'int', 'int', 'int']],

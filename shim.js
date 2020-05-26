@@ -2,7 +2,7 @@ const path = require("path");
 const replace = require("replace-in-file");
 const chalk = require("chalk");
 
-const FFI_LIB_FOLDER = path.dirname(require.resolve("ffi"));
+const FFI_LIB_FOLDER = path.dirname(require.resolve("ffi-napi"));
 
 var options = [{
   files: `${FFI_LIB_FOLDER}${path.sep}library.js`,
